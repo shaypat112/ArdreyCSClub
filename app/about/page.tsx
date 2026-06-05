@@ -1,4 +1,3 @@
-import { FAQ } from "./components/faq";
 import { Meetings } from "./components/meetings";
 import { Mission } from "./components/mission";
 import { Officers } from "./components/officers";
@@ -31,7 +30,6 @@ export default function AboutPage() {
       <Mission />
       <Officers />
       <Meetings />
-      <FAQ />
     </main>
   );
 }
