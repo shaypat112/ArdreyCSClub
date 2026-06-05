@@ -1,6 +1,6 @@
-import { Meetings } from "./components/meetings";
-import { Mission } from "./components/mission";
-import { Officers } from "./components/officers";
+import { Meetings } from "./components/Meetings";
+import { Mission } from "./components/Mission";
+import { Officers } from "./components/Officers";
 
 export default function AboutPage() {
   return (
