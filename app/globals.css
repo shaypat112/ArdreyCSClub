@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -127,41 +127,4 @@
   html {
     @apply font-sans;
   }
-}
-
-body {
-  background:
-    radial-gradient(circle at top, rgba(139, 92, 246, 0.15), transparent 40%),
-    #000;
-}
-@layer utilities {
-  .purple-glow {
-    box-shadow:
-      0 0 20px rgba(168, 85, 247, 0.25),
-      0 0 60px rgba(168, 85, 247, 0.1);
-  }
-}
-
-@layer utilities {
-  .hero-gradient {
-    background: linear-gradient(
-      to right,
-      #ffffff,
-      #c084fc,
-      #8b5cf6
-    );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-}
-body {
-  background:
-    radial-gradient(
-      circle at top,
-      rgba(168, 85, 247, 0.12),
-      transparent 40%
-    ),
-    #000;
 }
