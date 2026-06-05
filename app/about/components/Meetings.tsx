@@ -1,20 +1,19 @@
-import { Calendar, MapPin } from "lucide-react";
-
 export function Meetings() {
   return (
-    <section className="container py-20">
-      <h2 className="mb-6 text-3xl font-bold">Meetings</h2>
+    <section className="mx-auto max-w-5xl px-6 py-24">
+      <h2 className="mb-8 text-center text-4xl font-bold">
+        Meetings & Activities
+      </h2>
 
-      <div className="space-y-4">
-        <div className="flex items-center gap-3">
-          <Calendar className="h-5 w-5" />
-          <span>Weekly Club Meetings</span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <MapPin className="h-5 w-5" />
-          <span>Ardrey Kell High School</span>
-        </div>
+      <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-8">
+        <ul className="space-y-4 text-zinc-300">
+          <li>Weekly club meetings</li>
+          <li>Technical workshops</li>
+          <li>Guest speakers</li>
+          <li>Hackathon preparation sessions</li>
+          <li>Project collaboration opportunities</li>
+          <li>Coding competition practice</li>
+        </ul>
       </div>
     </section>
   );
