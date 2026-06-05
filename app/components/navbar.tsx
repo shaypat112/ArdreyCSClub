@@ -10,6 +10,7 @@ const links = [
   { href: "/about", label: "About" },
   { href: "/hackathons", label: "Hackathons" },
   { href: "/resources", label: "Resources" },
+  { href: "/developer", label: "Developer" },
 ];
 
 export function Navbar() {
@@ -61,21 +62,46 @@ export function Navbar() {
             </Button>
           </SheetTrigger>
 
-          <SheetContent side="right" className="bg-black">
-            <div className="mt-8 flex flex-col gap-6">
+          <SheetContent side="right" className="bg-black p-6">
+            <div className="mb-6 flex items-center justify-between">
+              <Link href="/" className="flex items-center gap-2 font-bold">
+                <div className="rounded-lg bg-purple-600 p-2">
+                  <Code2 className="h-3 w-4" />
+                </div>
+
+                <span className="text-lg">
+                  AK<span className="text-purple-400">CS</span>
+                </span>
+              </Link>
+
+              <a
+                href="https://github.com/Ardrey-Kell-Computer-Science-Club"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-zinc-300 hover:text-purple-400"
+              >
+                GitHub
+              </a>
+            </div>
+
+            <nav className="flex flex-col gap-3">
               {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-lg text-zinc-300"
+                  className="rounded-md px-3 py-2 text-lg text-zinc-200 hover:bg-zinc-900/40"
                 >
                   {link.label}
                 </Link>
               ))}
+            </nav>
 
-              <Button className="mt-4 bg-purple-600 hover:bg-purple-700">
-                Join Club
-              </Button>
+            <div className="mt-6">
+              <Link href="/join">
+                <Button className="w-full bg-purple-600 hover:bg-purple-700">
+                  Join Club
+                </Button>
+              </Link>
             </div>
           </SheetContent>
         </Sheet>
