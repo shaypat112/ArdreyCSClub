@@ -7,7 +7,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-center text-sm text-zinc-400 py-4">
+    <footer className="mt-auto bg-black text-center text-sm text-zinc-400 py-4">
       &copy; {new Date().getFullYear()} Ardrey Kell Computer Science Club. All
       rights reserved.
       <p>
