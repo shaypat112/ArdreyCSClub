@@ -19,7 +19,7 @@ const officers = [
   },
 ];
 
-export function Officers() {
+export default function Officers() {
   return (
     <section className="bg-zinc-950/50 py-24">
       <div className="mx-auto max-w-6xl px-6">

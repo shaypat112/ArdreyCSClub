@@ -1,7 +1,7 @@
 import { Code2, Trophy, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-export function Mission() {
+export default function Mission() {
   const items = [
     {
       icon: Code2,

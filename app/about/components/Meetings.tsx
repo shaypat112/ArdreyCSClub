@@ -1,4 +1,4 @@
-export function Meetings() {
+export default function Meetings() {
   return (
     <section className="mx-auto max-w-5xl px-6 py-24">
       <h2 className="mb-8 text-center text-4xl font-bold">

@@ -1,6 +1,6 @@
-import { Meetings } from "./components/meetings";
-import { Mission } from "./components/mission";
-import { Officers } from "./components/officers";
+import Meetings from "./components/meetings";
+import Mission from "./components/mission";
+import Officers from "./components/officers";
 
 export default function AboutPage() {
   return (
@@ -30,7 +30,6 @@ export default function AboutPage() {
       <Mission />
       <Officers />
       <Meetings />
-      <FAQ />
     </main>
   );
 }
