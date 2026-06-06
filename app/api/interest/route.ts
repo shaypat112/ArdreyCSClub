@@ -5,7 +5,22 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
 
 export async function POST(req: Request) {
-	const data = await req.json().catch(() => ({}));
+	// flexible body parsing: try JSON, otherwise parse urlencoded form body
+	let data: any = {};
+	try {
+		data = await req.json();
+	} catch (e) {
+		try {
+			const text = await req.text();
+			if (text && text.includes("=")) {
+				data = Object.fromEntries(new URLSearchParams(text).entries());
+			} else {
+				data = {};
+			}
+		} catch (e2) {
+			data = {};
+		}
+	}
 
 	// accept both camelCase and lowercase keys from client-side forms
 	const firstName = data.firstName ?? data.firstname ?? data.first_name ?? "";
@@ -17,9 +32,15 @@ export async function POST(req: Request) {
 	const message = data.message ?? data.notes ?? "";
 	const interestsRaw = data.interests ?? [];
 
-	if (!firstName || !lastName || !email) {
+	// basic email check
+	const emailValid = typeof email === "string" && /^\S+@\S+\.\S+$/.test(email);
+	if (!firstName || !lastName || !emailValid) {
+		const received = Object.keys(data || {});
 		return NextResponse.json(
-			{ error: "Missing required fields: firstName, lastName, email" },
+			{
+				error: "Missing or invalid required fields: firstName, lastName, email",
+				receivedFields: received,
+			},
 			{ status: 400 },
 		);
 	}
@@ -78,13 +99,13 @@ export async function POST(req: Request) {
 
 		// Confirm to the applicant
 		await resend.emails.send({
-			from: "CS Club <onboarding@resend.dev>",
+			from: "Ardrey Kell CS Club <onboarding@resend.dev>",
 			to: email,
-			subject: "You're on the CS Club interest list!",
+			subject: "You're on the Ardrey Kell CS Club interest list!",
 			html: `
         <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:24px">
           <h2 style="color:#7c3aed">Hey ${firstName}, you're in! 👾</h2>
-          <p>Thanks for signing up for the CS / AK Club interest list. We'll reach out soon with meeting times, events, and how to get involved.</p>
+          <p>Thanks for signing up for the Ardrey Kell CS Club interest list. We'll reach out soon with meeting times, events, and how to get involved.</p>
           <p style="color:#666;font-size:13px">You listed interest in: ${interests?.join(", ") || "general membership"}</p>
           <hr style="border:none;border-top:1px solid #eee;margin:20px 0"/>
           <p style="color:#999;font-size:12px">Questions? Reply to this email or reach us at ${process.env.ADMIN_EMAIL}.</p>
